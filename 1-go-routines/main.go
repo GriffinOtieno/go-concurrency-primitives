@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"time"
 )
+// A goroutine is simply a lightweight thread
 
 func main(){
 	go count("dogs")
