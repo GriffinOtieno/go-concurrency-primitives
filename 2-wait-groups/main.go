@@ -26,7 +26,6 @@ func main(){
 		count("dogs")
 		wg.Done()
 	}()
-
 	go func(){
 		count("cats")
 		wg.Done()
