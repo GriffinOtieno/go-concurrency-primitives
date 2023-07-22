@@ -39,7 +39,6 @@ func main(){
 func count(something string){
 	for i := 1; i <=10; i++ {
 		fmt.Println(i, something)
-
 		time.Sleep(time.Millisecond * 500) // sleep for half a second
 	}
 }
