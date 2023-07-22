@@ -12,27 +12,26 @@ go routines to complete execution
 */
 
 func main(){
-	// create wait group
-	var wg sync.WaitGroup
+	var wg sync.WaitGroup // create wait group
 
-	// wait for one groutime
+	// indicate there is one go routine to wait for
+	// just a counter - increment the counter (how many go routines are running)
 	wg.Add(1)
    
-	/**
-	Wrap call to an anonymous. This syntax creates a function 
-	and immediately invokes it
-	*/
+	// create an anonymous function and immediately invoke it
 	go func(){
 		count("dogs")
-		wg.Done()
-	}()
-	go func(){
-		count("cats")
-		wg.Done()
+		wg.Done() //decrement the counter by when the go routine finishes
 	}()
 
-    // call wait at the end of the main function
-	wg.Wait()
+	// create an anonymous function and immediately invoke it
+	go func(){
+		count("cats")
+		wg.Done() 
+	}()
+
+	// call wait at the end of the main function. Block until the count is 0
+	wg.Wait() // will wait if the go routines havent finished
 }
 
 func count(something string){
